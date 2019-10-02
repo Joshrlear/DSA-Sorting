@@ -20,3 +20,6 @@
  The reason for this is because when the pivot is chosen, it puts all values smaller than pivot on left and bigger on right. As you can see the number 1 lets us know that the numbers 3, 9, and 1 are clearly meant to be on the left side as neither 3 or 9 are smaller than 1 but all are smaller than 14 and up. Now, looking at 14 and up, any of these could have been the pivot since the remainder are all in ascending order. 
  
  Remember, all numbers to the left of pivot must be less than pivot and all numbers to the right must be greater. This is true for the remainder of the numbers.
+
+ 2. show the resulting list after the second partitioning: [14, 17, 13, 15, 19, 10, 3, 16, 9, 12]
+    when using last item as pivot: [ 3, 9, 10, 12, 19, 14, 17, 16, 13, 15 ]

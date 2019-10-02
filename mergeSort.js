@@ -1,3 +1,5 @@
+const LinkedList = require('./linkedList')
+
 function mergeSort(array) {
     // array is empty or only one index
     if (array.length <= 1) { return array }
@@ -14,7 +16,7 @@ function mergeSort(array) {
 }
 
 function merge(left, right, array) {
-    console.log('left:', left, 'right:', right)
+    //console.log('left:', left, 'right:', right)
     // set left, right and output indexes to 0
     let leftIndex = 0
     let rightIndex = 0
@@ -32,17 +34,76 @@ function merge(left, right, array) {
             array[outputIndex++] = right[rightIndex++];
         }
     }
+    // for loops below are for adding remaining values of one array
+    // after the other array has been exhausted of values
     for (let i = leftIndex; i < left.length; i++) {
-        console.log('array[outputIndex]',array[outputIndex],'left[i]',left[i])
+        //console.log('array[outputIndex]',array[outputIndex],'left[i]',left[i])
         array[outputIndex++] = left[i];
     }
 
     for (let i = rightIndex; i < right.length; i++) {
-        console.log('array[outputIndex]',array[outputIndex],'right[i]',right[i])
+        //console.log('array[outputIndex]',array[outputIndex],'right[i]',right[i])
         array[outputIndex++] = right[i];
     }
-    console.log('merge, array:', array, 'count:', count)
+    //console.log('merge, array:', array, 'count:', count)
     return array;
 }
 let count = 0
-mergeSort([21, 1, 26, 45, 29, 28, 2, 9, 16, 49, 39, 27, 43, 34, 46, 40])
+//console.log('array:',mergeSort([21, 1, 26, 45, 29, 28, 2, 9, 16, 49, 39, 27, 43, 34, 46, 40])))
+
+function linkedList() {
+    const list = new LinkedList
+    list.insertFirst(15)
+    list.insertFirst(47)
+    list.insertFirst(21)
+    list.insertFirst(3)
+    list.insertFirst(27)
+    list.insertFirst(11)
+    list.insertFirst(6)
+    //list.sort()
+    linkedListMerge(list)
+}
+linkedList()
+
+function linkedListMerge(list) {
+    //if (!list.head) { return }
+    
+    // list has only one node. already sorted
+    if (list.next == null) { 
+        console.log('list.next:', list.next)
+        return list }
+    // declare middle, left and right of array
+    const middle = list.findMiddle()
+    let left = list.trim(middle)
+    let right = middle
+    console.log('left:', left, 'right:', right)
+    left = linkedListMerge(left)
+    right = linkedListMerge(right)
+    // array has been split into pairs of two and is ready to be merged
+    return mergeLists(left, right)
+}
+
+function mergeLists(left, right, mergeList = new LinkedList) {
+    //console.log('left:', left, 'right:', right, 'mergeList:', mergeList)
+    while (left !==undefined && right !==undefined) {
+        //console.log(left, right)
+        if (left.value < right.value) {
+            mergeList.insertLast(left.value)
+        }
+        else { mergeList.insertLast(left.value) }
+        // increment
+        //console.log('mergeList:', mergeList)
+        left = left.next
+        right = right.next
+    }
+    while (left !== undefined) {
+        mergeList.insertLast(left.value)
+        left = left.next
+    }
+    while (right !== undefined) {
+        mergeList.insertLast(right.value)
+        right = right.next
+    }
+    //console.log('mergeList:', mergeList)
+    return mergeList
+}
