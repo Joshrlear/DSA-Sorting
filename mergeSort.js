@@ -67,11 +67,10 @@ linkedList()
 
 function linkedListMerge(list) {
     //if (!list.head) { return }
-    
+    console.log('list:', list)
+    console.log('list.next:', list.next)
     // list has only one node. already sorted
-    if (list.next == null) { 
-        console.log('list.next:', list.next)
-        return list }
+    if (list.next == null) { return list }
     // declare middle, left and right of array
     const middle = list.findMiddle()
     let left = list.trim(middle)
@@ -85,7 +84,7 @@ function linkedListMerge(list) {
 
 function mergeLists(left, right, mergeList = new LinkedList) {
     //console.log('left:', left, 'right:', right, 'mergeList:', mergeList)
-    while (left !==undefined && right !==undefined) {
+    while (left !== undefined && right !== undefined) {
         //console.log(left, right)
         if (left.value < right.value) {
             mergeList.insertLast(left.value)
