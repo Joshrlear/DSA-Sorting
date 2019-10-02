@@ -123,20 +123,13 @@ class LinkedList {
             while (currNode.value !== item) {
                 this.ticks += 1
                 if (currNode.next === null ) {
-                    return {
-                        status: null, 
-                        ticks: this.ticks
-                    }
+                    return currNode
                 }
                 else {
                     currNode = currNode.next
                 }
             }
-            let info = {
-                currNode,
-                ticks: this.ticks
-            }
-            return info
+            return currNode
         }
     }
 

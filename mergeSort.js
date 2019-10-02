@@ -65,24 +65,30 @@ function linkedList() {
 }
 linkedList()
 
-function linkedListMerge(list) {
-    //if (!list.head) { return }
-    console.log('list:', list)
-    console.log('list.next:', list.next)
+
+// ***** if another student is looking at this, i'd recommend not attempting this.
+// ***** no other student that I've seen has finished this and I've been trying for
+// ***** over a day now. waste of time and have learned near nothing from this.
+
+/* function linkedListMerge(list) {
     // list has only one node. already sorted
-    if (list.next == null) { return list }
+    if (!list.head.next) { return list }
     // declare middle, left and right of array
     const middle = list.findMiddle()
     let left = list.trim(middle)
+    //console.log('left:',left,'left.next:', left.head.next.value)
     let right = middle
     console.log('left:', left, 'right:', right)
     left = linkedListMerge(left)
+    //console.log('left:', left)
     right = linkedListMerge(right)
+    console.log('right:', right)
     // array has been split into pairs of two and is ready to be merged
     return mergeLists(left, right)
-}
+} */
 
 function mergeLists(left, right, mergeList = new LinkedList) {
+    console.log('here')
     //console.log('left:', left, 'right:', right, 'mergeList:', mergeList)
     while (left !== undefined && right !== undefined) {
         //console.log(left, right)
